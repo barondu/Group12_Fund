@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.citi.fund.mapper.UserMapper">
+
+    <sql id="userCondition">
+        <where>
+            <if test="user.id !=null and user.id !=0">
+                and a.id = #{user.id}
+            </if>
+            <if test="user.firstName != null">
+                and a.firstName = #{user.firstName}
+            </if>
+            <if test="user.lastName != null">
+                and a.lastName = #{user.lastName}
+            </if>
+            <if test="user.email != null">
+                and a.email = #{user.email}
+            </if>
+            <if test="user.employeeId != null">
+                and a.employeeId = #{user.employeeId}
+            </if>
+        </where>
+    </sql>
+
+
+    <select id="selectByUser" resultType="user">
+        select *
+        from user a
+        <include refid="userCondition"></include>
+    </select>
+
+    <select id="selectUserByEmployeeId" resultType="user">
+        select *
+        from user
+        where employeeId = #{employeeId}
+    </select>
+
+    <select id="queryEmployeeByEmail" resultType="string">
+        select employeeId
+        from user
+        where email = #{email}
+    </select>
+
+    <select id="selectUserByEmail" resultType="user">
+        select *
+        from user
+        where email = #{email}
+    </select>
+
+    <insert id="createUser" useGeneratedKeys="true" keyProperty="id">
+        insert into user (firstName,
+                          lastName,
+                          email,
+                          password,
+                          isManager,
+                          employeeId) value (#{user.firstName},
+            #{user.lastName},
+            #{user.email},
+            #{user.password},
+            #{user.isManager},
+            #{user.employeeId}
+            )
+    </insert>
+
+</mapper>

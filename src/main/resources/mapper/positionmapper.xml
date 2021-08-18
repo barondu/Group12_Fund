@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.citi.fund.mapper.PositionMapper">
+
+    <sql id="positionCondition">
+        <where>
+            <if test="position.id !=null and position.id !=0">
+                and a.id = #{position.id}
+            </if>
+            <if test="position.positionId != null">
+                and a.positionId = #{position.positionId}
+            </if>
+            <if test="position.securityId != null">
+                and a.securityId = #{position.securityId}
+            </if>
+            <if test="position.quantity != 0">
+                and a.quantity = #{position.quantity}
+            </if>
+            <if test="position.fundId != null">
+                and a.fundId = #{position.fundId}
+            </if>
+        </where>
+    </sql>
+
+    <select id="selectByPosition" resultType="position">
+        select *
+        from position a
+        <include refid="positionCondition"></include>
+    </select>
+
+    <select id="selectPositionByFundId" resultType="position">
+        select *
+        from position
+        where fundId = #{fundId}
+    </select>
+
+    <delete id="deletePositionByFundId">
+        delete
+        from position
+        where fundId = #{fundId}
+    </delete>
+
+    <select id="selectPositionByPositionId" resultType="position">
+        select *
+        from position
+        where positionId = #{positionId}
+    </select>
+
+    <insert id="createPosition" useGeneratedKeys="true" keyProperty="id">
+        insert into position (positionId,
+                              securityId,
+                              quantity,
+                              datePurchased,
+                              fundId) value ( #{position.positionId},
+            #{position.securityId},
+            #{position.quantity},
+            #{position.datePurchased},
+            #{position.fundId}
+            )
+    </insert>
+
+    <delete id="deletePositionByPositionId">
+        delete
+        from position
+        where positionId = #{positionId}
+    </delete>
+
+</mapper>

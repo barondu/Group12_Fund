@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.citi.fund.mapper.FundUserMapper">
+
+    <sql id="fundUserCondition">
+        <where>
+            <if test="fundUser.id !=null and fundUser.id !=0">
+                and a.id = #{fundUser.id}
+            </if>
+            <if test="fundUser.fundId != null">
+                and a.fundId = #{fundUser.fundId}
+            </if>
+            <if test="fundUser.email != null">
+                and a.email = #{fundUser.email}
+            </if>
+            <if test="fundUser.employeeId !=null">
+                and a.employeeId = #{fundUser.employeeId}
+            </if>
+        </where>
+    </sql>
+
+    <select id="selectByFundUser" resultType="fundUser">
+        select *
+        from funduser a
+        <include refid="fundUserCondition"></include>
+    </select>
+
+    <select id="selectFundUserByFundId" resultType="fundUser">
+        select *
+        from funduser
+        where fundId = #{fundId}
+    </select>
+
+    <insert id="createFundUser" useGeneratedKeys="true" keyProperty="id">
+        insert into funduser(fundId,
+                             email,
+                             employeeId)
+            value ( #{fundUser.fundId},
+            #{fundUser.email},
+            #{fundUser.employeeId}
+            )
+    </insert>
+
+    <delete id="deletFundUserById">
+        delete
+        from funduser
+        where id = #{id}
+    </delete>
+
+</mapper>
