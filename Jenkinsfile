@@ -5,10 +5,22 @@ def dockerImageTag = "${projectName}:${version}"
 pipeline {
   agent any
 
-      tools {
-          maven 'Maven 3.8.2'
-          jdk 'jdk8'
+  tools {
+      maven 'Maven 3.8.2'
+      jdk 'jdk8'
   }
+  
+  stage ('Build') {
+      steps {
+          sh 'mvn -Dmaven.test.failure.ignore=true install' 
+      }
+      post {
+          success {
+              junit 'target/surefire-reports/**/*.xml' 
+          }
+      }
+  }
+  
   stages {
      stage('Build docker image') {
           // this stage also builds and tests the Java project using Maven
