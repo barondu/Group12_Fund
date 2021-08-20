@@ -2,29 +2,14 @@ def projectName = 'fundpipe'
 def version = "0.0.${currentBuild.number}"
 def dockerImageTag = "${projectName}:${version}"
 
-
 pipeline {
-  agent none
+  agent any
+  agent any
+      tools {
+          maven 'Maven 3.3.9'
+          jdk 'jdk8'
+  }
   stages {
-      stages {
-      stage('Maven Install') {
-        agent {
-          docker {
-            image 'maven:maven'
-          }
-        }
-        steps {
-          sh 'mvn clean install'
-        }
-     }
-    
-     stage('Build docker image') {
-          // this stage also builds and tests the Java project using Maven
-       agent any
-          steps {
-            sh "docker build -t ${dockerImageTag} ."
-          }
-      }
      stage('Build docker image') {
           // this stage also builds and tests the Java project using Maven
           steps {
