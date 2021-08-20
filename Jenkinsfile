@@ -3,14 +3,14 @@ def version = "0.0.${currentBuild.number}"
 def dockerImageTag = "${projectName}:${version}"
 
 pipeline {
-  agent any
+  agent none
 
   stages {
       stages {
       stage('Maven Install') {
         agent {
           docker {
-            image 'maven:3.5.0'
+            image 'maven3.5.0'
           }
         }
         steps {
@@ -20,6 +20,7 @@ pipeline {
     
      stage('Build docker image') {
           // this stage also builds and tests the Java project using Maven
+       agent any
           steps {
             sh "docker build -t ${dockerImageTag} ."
           }
