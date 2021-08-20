@@ -1,22 +1,22 @@
-//package com.citi.fund.mapper;
-//
-//import com.citi.fund.model.Position;
-//import org.junit.jupiter.api.Test;
-//import org.junit.jupiter.api.extension.ExtendWith;
-//import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.boot.test.context.SpringBootTest;
-//import org.springframework.test.context.junit.jupiter.SpringExtension;
-//
-//import java.util.Date;
-//import java.util.List;
-//
-//@SpringBootTest
-//@ExtendWith(SpringExtension.class)
-//class PositionMapperTest {
-//
-//    @Autowired
-//    private PositionMapper positionMapper;
-//
+package com.citi.fund.mapper;
+
+import com.citi.fund.model.Position;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
+
+import java.util.Date;
+import java.util.List;
+
+@SpringBootTest
+@ExtendWith(SpringExtension.class)
+class PositionMapperTest {
+
+    @Autowired
+    private PositionMapper positionMapper;
+
 //    @Test
 //    void selectByPosition() {
 //        List<Position> ps = positionMapper.selectByPosition(new Position());
@@ -62,4 +62,4 @@
 //    void deleteByFundId() {
 //        positionMapper.deletePositionByFundId("f1009");
 //    }
-//}
+}

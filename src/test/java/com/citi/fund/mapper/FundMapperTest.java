@@ -1,21 +1,21 @@
-//package com.citi.fund.mapper;
-//
-//import com.citi.fund.model.Fund;
-//import org.junit.jupiter.api.Test;
-//import org.junit.jupiter.api.extension.ExtendWith;
-//import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.boot.test.context.SpringBootTest;
-//import org.springframework.test.context.junit.jupiter.SpringExtension;
-//import org.springframework.util.Assert;
-//
-//import java.util.List;
-//
-//@SpringBootTest
-//@ExtendWith(SpringExtension.class)
-//class FundMapperTest {
-//    @Autowired
-//    private FundMapper fundMapper;
-//
+package com.citi.fund.mapper;
+
+import com.citi.fund.model.Fund;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
+import org.springframework.util.Assert;
+
+import java.util.List;
+
+@SpringBootTest
+@ExtendWith(SpringExtension.class)
+class FundMapperTest {
+    @Autowired
+    private FundMapper fundMapper;
+
 //    @Test
 //    void selectByFund() {
 //        List<Fund> fds=fundMapper.selectByFund(new Fund());
@@ -24,7 +24,7 @@
 //
 //    @Test
 //    void selectByFundId() {
-//        Fund fund=fundMapper.selectFundByFundId("f1001");
+//        Fund fund=fundMapper.selectFundByFundId("f0001");
 //        System.out.println(fund);
 //    }
 //
@@ -52,4 +52,4 @@
 //    void deleteFundByFundId() {
 //        fundMapper.deleteFundByFundId("f1007");
 //    }
-//}
+}

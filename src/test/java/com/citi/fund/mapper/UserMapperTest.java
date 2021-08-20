@@ -1,21 +1,21 @@
-//package com.citi.fund.mapper;
-//
-//import com.citi.fund.model.User;
-//import org.junit.jupiter.api.Test;
-//import org.junit.jupiter.api.extension.ExtendWith;
-//import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.boot.test.context.SpringBootTest;
-//import org.springframework.test.context.junit.jupiter.SpringExtension;
-//
-//import java.util.List;
-//
-//@SpringBootTest
-//@ExtendWith(SpringExtension.class)
-//class UserMapperTest {
-//
-//    @Autowired
-//    private UserMapper userMapper;
-//
+package com.citi.fund.mapper;
+
+import com.citi.fund.model.User;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
+
+import java.util.List;
+
+@SpringBootTest
+@ExtendWith(SpringExtension.class)
+class UserMapperTest {
+
+    @Autowired
+    private UserMapper userMapper;
+
 //    @Test
 //    void selectByUser() {
 //       List<User> us=userMapper.selectByUser(new User());
@@ -52,6 +52,6 @@
 //        u.setIsManager(1);
 //        userMapper.createUser(u);
 //    }
-//
-//
-//}
+
+
+}
