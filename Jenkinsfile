@@ -6,6 +6,24 @@ pipeline {
   agent any
 
   stages {
+      stages {
+      stage('Maven Install') {
+        agent {
+          docker {
+            image 'maven3.5.0'
+          }
+        }
+        steps {
+          sh 'mvn package -Dmaven.test.skip=true'
+        }
+     }
+    
+     stage('Build docker image') {
+          // this stage also builds and tests the Java project using Maven
+          steps {
+            sh "docker build -t ${dockerImageTag} ."
+          }
+      }
      stage('Build docker image') {
           // this stage also builds and tests the Java project using Maven
           steps {
