@@ -5,27 +5,13 @@ def dockerImageTag = "${projectName}:${version}"
 pipeline {
   agent any
 
-  
-  
   stages {
-      stage('Maven Install') {
-        agent {
-          docker {
-            image 'maven:3.5.0'
-          }
-        }
-        steps {
-          sh 'mvn package -Dmaven.test.skip=true'
-        }
-     }
-    
      stage('Build docker image') {
           // this stage also builds and tests the Java project using Maven
           steps {
             sh "docker build -t ${dockerImageTag} ."
           }
       }
-
     stage('Deploy Container To Openshift') {
       steps {
         sh "oc login https://localhost:8443 --username admin --password admin --insecure-skip-tls-verify=true"
