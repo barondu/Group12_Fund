@@ -29,7 +29,7 @@ public class LoginController {
 
     @RequestMapping("homePage")
     public String homePage() {
-        return "Citi Fund Management Organization";
+        return "Citi Fund Management Organization  UPDATE！！！！！";
     }
 
     @PostMapping("signin")
