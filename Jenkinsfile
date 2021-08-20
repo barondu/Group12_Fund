@@ -16,6 +16,7 @@ pipeline {
           sh 'mvn clean install'
         }
      }
+    
      stage('Build docker image') {
           // this stage also builds and tests the Java project using Maven
           steps {
