@@ -4,9 +4,9 @@ def dockerImageTag = "${projectName}:${version}"
 
 pipeline {
   agent any
-  agent any
+
       tools {
-          maven 'Maven 3.3.9'
+          maven 'Maven 3.8.2'
           jdk 'jdk8'
   }
   stages {
