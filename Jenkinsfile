@@ -28,7 +28,7 @@ pipeline {
           // this stage also builds and tests the Java project using Maven
           steps {
             sh "docker build -t ${dockerImageTag} ."
-            sh "docker run --name fundapp -p 8090:8080 --link mysql ${dockerImageTag}"
+            sh "docker run --name fundapp -p 8090:8080 -d --link mysql ${dockerImageTag}"
           }
       }
     stage('Deploy Container To Openshift') {
