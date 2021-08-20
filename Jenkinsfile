@@ -4,7 +4,6 @@ def dockerImageTag = "${projectName}:${version}"
 
 pipeline {
   agent none
-
   stages {
       stages {
       stage('Maven Install') {
