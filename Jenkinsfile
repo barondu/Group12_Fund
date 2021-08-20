@@ -10,18 +10,20 @@ pipeline {
 //       jdk 'jdk8'
   }
   
-  stage ('Build') {
+  
+  
+  stages {
+    
+    stage ('Build') {
       steps {
           sh 'mvn -Dmaven.test.failure.ignore=true install' 
       }
-      post {
-          success {
-              junit 'target/surefire-reports/**/*.xml' 
-          }
-      }
+//       post {
+//           success {
+//               junit 'target/surefire-reports/**/*.xml' 
+//           }
+//       }
   }
-  
-  stages {
      stage('Build docker image') {
           // this stage also builds and tests the Java project using Maven
           steps {
